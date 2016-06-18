@@ -1,0 +1,13 @@
+Source: yandex-go-gridrouter
+Section: misc
+Priority: extra
+Maintainer: Ivan Krutov <vania-pooh@yandex-team.ru>
+Build-Depends: cdbs, debhelper (>= 7.0.50~), git, golang-1.6
+Standards-Version: 3.9.2
+Vcs-Git: git@github.com:aandryashin/ggr-deb.git
+
+Package: yandex-go-gridrouter
+Architecture: amd64
+Depends: upstart
+Conflicts: yandex-grid-router
+Description: Go Grid Router implementation

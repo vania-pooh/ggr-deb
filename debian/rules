@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+GODIR := /usr/lib/go-1.6/bin
+GO := ${GODIR}/go
+export GOPATH := $(shell pwd)/build
+export PATH := ${GODIR}:${GOPATH}/bin:$(PATH)
+
+build:
+	mkdir -p build
+	go get github.com/tools/godep
+	go get github.com/aandryashin/ggr
+	cd ${GOPATH}/src/github.com/aandryashin/ggr && godep restore && go build -o ${GOPATH}/bin/gridrouter
+
+clean::
+	rm -Rf build || true

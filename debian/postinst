@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+case "$1" in
+    configure)
+        # Create selenium user if it doesn't exist
+        if ! id selenium > /dev/null 2>&1 ; then
+            adduser --system --home /home/selenium \
+                --ingroup nogroup --disabled-password --shell /bin/false \
+                selenium
+        fi
+
+        install -d 755 -o selenium /var/run/selenium
+        install -d 755 -o selenium /var/log/selenium
+    ;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+	;;
+
+	*)
+	   echo "postinst called with unknown argument \`$1'" >&2\n	   exit 1
+	;;
+esac
+exit 0

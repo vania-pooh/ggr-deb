@@ -1,0 +1,24 @@
+#!/bin/sh
+
+description "yandex-go-gridrouter"
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+setuid selenium
+limit nofile 4096 4096
+
+script
+
+    CONF_FILE="/etc/gridrouter/gridrouter.conf"
+    if [ -r $CONFFILE ]; then 
+        . "$CONFFILE"
+    fi
+
+    PORT=${PORT:-4444}
+
+    SERVICE_ARGS="-port $PORT"
+    SERVICE="/usr/local/bin/gridrouter"
+
+    $SERVICE $SERVICE_ARGS >> /var/log/gridrouter/gridrouter.log 2>&1
+end script

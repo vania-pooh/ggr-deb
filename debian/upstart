@@ -11,13 +11,13 @@ limit nofile 4096 4096
 script
 
     CONF_FILE="/etc/gridrouter/gridrouter.conf"
-    if [ -r $CONFFILE ]; then 
-        . "$CONFFILE"
+    if [ -r "$CONF_FILE" ]; then 
+        . "$CONF_FILE"
     fi
 
     PORT=${PORT:-4444}
 
-    SERVICE_ARGS="-port $PORT"
+    SERVICE_ARGS="-port $PORT -conf /etc/gridrouter/browsers.xml"
     SERVICE="/usr/local/bin/gridrouter"
 
     $SERVICE $SERVICE_ARGS >> /var/log/gridrouter/gridrouter.log 2>&1

@@ -9,8 +9,7 @@ case "$1" in
                 selenium
         fi
 
-        install -d 755 -o selenium /var/run/selenium
-        install -d 755 -o selenium /var/log/selenium
+        install -d 755 -o selenium /var/log/gridrouter
     ;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)

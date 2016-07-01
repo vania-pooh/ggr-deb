@@ -4,7 +4,7 @@
         rotate 7
         compress
         delaycompress
-        create 644 grid adm
+        create 644 selenium adm
         sharedscripts
         copytruncate
 }
